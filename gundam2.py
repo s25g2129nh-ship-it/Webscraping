@@ -11,7 +11,7 @@ def get_gbo2_reviews():
     url = f"https://store.steampowered.com/appreviews/{app_id}"
     params = {
         "json": 1,
-        "language": "japanese",  # 日本語のレビューを指定
+        "language": "japanese",  # 日本語のレビュー
         "filter": "recent",  # recent（最新順）、updated（更新順）、all（おすすめ順）
         "num_per_page": 100,  # 1ページあたりの取得件数（最大100件）
         "purchase_type": "all",
