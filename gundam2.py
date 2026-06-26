@@ -1,7 +1,7 @@
 import csv
 import json
 import requests
-
+#check add git
 
 def get_gbo2_reviews():
     # バトオペ2のSteam AppID
@@ -80,4 +80,4 @@ def get_gbo2_reviews():
 
 
 if __name__ == "__main__":
-    get_gbo2_reviews()
+    get_gbo2_reviews()      
