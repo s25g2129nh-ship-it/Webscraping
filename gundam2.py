@@ -1,8 +1,6 @@
 import csv
 import json
 import requests
-#check add git
-#check2
 
 def get_gbo2_reviews():
     # バトオペ2のSteam AppID
