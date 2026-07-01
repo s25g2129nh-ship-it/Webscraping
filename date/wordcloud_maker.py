@@ -1,3 +1,6 @@
+import os
+from datetime import datetime
+
 import pandas as pd
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
@@ -5,13 +8,13 @@ from fugashi import Tagger
 import re
 
 # ===== 1. CSV の読み込み =====
-# ★ CSV のパスを自分の環境に合わせて変更
-df = pd.read_csv(r"C:\Users\Mizuk\Documents\APEX.csv", encoding="utf-8")
+# ★ CSV のパスを自分の環境に合わせて変更(パスは必ずクォートで囲む)
+df = pd.read_csv(r"date/big/big-excel/8bandeguti.csv", encoding="utf-8")
 
 # レビュー本文をすべて結合
 text_data = " ".join(df["レビュー本文"].dropna().astype(str).tolist())
 
-# ===== 2. 日本語形態素解析（名詞だけ抽出） =====
+# ===== 2. 日本語形態素解析(名詞だけ抽出) =====
 tagger = Tagger()
 tokens = []
 
@@ -36,7 +39,7 @@ for w in tokens:
     if re.fullmatch(r"[ぁ-ん]{2,3}", w):
         continue
 
-    # ひらがなのみ（長さ問わず）
+    # ひらがなのみ(長さ問わず)
     if re.fullmatch(r"[ぁ-ん]+", w):
         continue
 
@@ -56,7 +59,7 @@ stopwords = {
 
 cleaned_words = [w for w in cleaned_words if w not in stopwords]
 
-# ===== 5. フォント設定（あなたの環境で読み込めるフォント） =====
+# ===== 5. フォント設定(あなたの環境で読み込めるフォント) =====
 font_path = r"C:\Windows\Fonts\meiryo.ttc"
 
 print("使用フォント:", font_path)  # ← 確認用
@@ -71,9 +74,26 @@ wordcloud = WordCloud(
     max_font_size=150
 ).generate(" ".join(cleaned_words))
 
-# ===== 7. 表示 =====
+# ===== 7. 自動保存 =====
+# 保存先フォルダ(なければ自動作成)
+output_dir = "output"
+os.makedirs(output_dir, exist_ok=True)
+
+# ファイル名が毎回同じだと上書きされてしまうので、実行日時を付けて保存する
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+output_path = os.path.join(output_dir, f"wordcloud_{timestamp}.png")
+
+# (a) wordcloud自体の to_file() で保存(画像そのものをそのまま保存したい場合はこちらが手軽)
+wordcloud.to_file(output_path)
+print(f"画像を保存しました: {output_path}")
+
+# ===== 8. 表示 =====
 plt.figure(figsize=(12, 8))
 plt.imshow(wordcloud, interpolation="bilinear")
 plt.axis("off")
 plt.tight_layout()
+
+# (b) matplotlib側でも保存したい場合(タイトルや軸を含めた見た目で保存したいとき用)
+# plt.savefig(output_path, dpi=150, bbox_inches="tight")
+
 plt.show()
