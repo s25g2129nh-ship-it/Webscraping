@@ -9,7 +9,7 @@ import re
 
 # ===== 1. CSV の読み込み =====
 # ★ CSV のパスを自分の環境に合わせて変更(パスは必ずクォートで囲む)
-df = pd.read_csv(r"date/big/big-excel/GTA.csv", encoding="utf-8")
+df = pd.read_csv(r"date/big/big-excel/Terraria.csv", encoding="utf-8")
 
 # レビュー本文をすべて結合
 text_data = " ".join(df["レビュー本文"].dropna().astype(str).tolist())
@@ -51,7 +51,7 @@ for w in tokens:
 
 # ===== 4. ストップワード =====
 stopwords = {
-    "する", "いる", "ある", "こと", "よう", "ため",
+    "する", "いる", "テラ", "リア", "ある", "こと", "よう", "ため",
     "これ", "それ", "あれ", "さん", "ます", "です",
     "感じ", "部分", "自分", "今回", "場合", "ところ",
     "時", "人", "方", "的", "中"
