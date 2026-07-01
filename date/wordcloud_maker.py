@@ -9,7 +9,7 @@ import re
 
 # ===== 1. CSV の読み込み =====
 # ★ CSV のパスを自分の環境に合わせて変更(パスは必ずクォートで囲む)
-df = pd.read_csv(r"date/big/big-excel/8bandeguti.csv", encoding="utf-8")
+df = pd.read_csv(r"date/big/big-excel/GTA.csv", encoding="utf-8")
 
 # レビュー本文をすべて結合
 text_data = " ".join(df["レビュー本文"].dropna().astype(str).tolist())
