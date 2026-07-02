@@ -7,8 +7,8 @@ from tqdm import tqdm
 # ==========================================
 # ⚙️ 設定部分
 # ==========================================
-input_file_path = r"C:\Users\oojin\Documents\webスクレイピング\Webscraping\date\big\big-excel\8bandeguti.csv"
-output_file_name = "8bandeguti_ollama_analyzed.csv"
+input_file_path = r"date/big/big-excel/WILDS.csv"
+output_file_name = "WILDS_ollama_analyzed.csv"
 # ==========================================
 
 if not os.path.exists(input_file_path):
@@ -24,7 +24,7 @@ except UnicodeDecodeError:
 print(f"データを読み込みました。総件数: {len(df)}件")
 
 prompt_template = """
-以下のSteamのゲームレビュー（8番出口）を読み、文脈やスラング、ホラー表現を考慮して感情分析と要因分析を行ってください。
+以下のSteamのゲームレビュー（WILDS）を読み、文脈やスラング、ホラー表現を考慮して感情分析と要因分析を行ってください。
 
 【分析ルール】
 1. sentiment: 文章全体の本音から、[positive, negative, neutral] のいずれか1つを選んでください。
