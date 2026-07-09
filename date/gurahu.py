@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # 1. データの読み込み
-file_path = r"C:\Users\oojin\Documents\webスクレイピング\Webscraping\date\bad\Bad-analyzed\MOBILE SUIT GUNDAM BATTLE OPERATION 2_ollama_analyzed.csv"
+file_path = r"C:\Users\oojin\Documents\webスクレイピング\Webscraping\date\bad\Bad-analyzed\Shadowverse Worlds Beyond_ollama_analyzed.csv"
 df = pd.read_csv(file_path)
 
 # 2. データの集計
@@ -103,14 +103,14 @@ ax4.legend(
 ax4.set_title("4. negative の要因内訳", fontsize=13, fontweight="bold", pad=10)
 
 # ★ 全体のメインタイトル設定
-plt.suptitle("MOBILE SUIT GUNDAM BATTLE OPERATION 2 レビュー分析結果レポート", fontsize=18, fontweight="bold", y=0.96)
+plt.suptitle("Shadowverse Worlds Beyond レビュー分析結果レポート", fontsize=18, fontweight="bold", y=0.96)
 
 # ★ 配置の微調整
 plt.tight_layout(rect=[0, 0, 0.9, 0.92])
 plt.subplots_adjust(wspace=0.4, hspace=0.3)
 
 # 4. 画像として保存
-output_path = r"C:\Users\oojin\Documents\webスクレイピング\Webscraping\date\bad\Bad- graph\MOBILE SUIT GUNDAM BATTLE OPERATION 2_graph.png"
+output_path = r"C:\Users\oojin\Documents\webスクレイピング\Webscraping\date\bad\Bad- graph\Shadowverse Worlds Beyond_graph.png"
 plt.savefig(output_path, dpi=150, bbox_inches="tight")
 
 print(f"視認性を改善したグラフを保存しました: {output_path}")
